@@ -1,4 +1,4 @@
-package Member.DAO;
+package DAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,7 +11,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.RowMapper;
 
-import Member.DTO.MemberDTO;
+import DTO.MemberDTO;
 
 public class NewMemberDAO implements MemberDAO{
 	

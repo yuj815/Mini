@@ -1,8 +1,8 @@
-package Member.DAO;
+package DAO;
 
 import java.sql.SQLException;
 
-import Member.DTO.MemberDTO;
+import DTO.MemberDTO;
 
 
 public interface MemberDAO {
