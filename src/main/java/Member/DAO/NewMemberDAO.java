@@ -1,11 +1,14 @@
 package Member.DAO;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.RowMapper;
 
 import Member.DTO.MemberDTO;
@@ -41,11 +44,22 @@ public class NewMemberDAO implements MemberDAO{
 	}
 
 	@Override
-	public int insert(MemberDTO member) throws ClassNotFoundException, SQLException {
-		
-		
-		
-		return 0;
+	public int insert(final MemberDTO member) throws ClassNotFoundException, SQLException {
+		 return	template.update(new PreparedStatementCreator() {
+				@Override
+				public PreparedStatement createPreparedStatement(Connection con)
+						throws SQLException {
+					String sql = "INSERT INTO MEMBER(email, PWD, NAME, cPhone) VALUES( ?, ?, ?, ?)";
+					PreparedStatement pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, member.getEmail());
+					pstmt.setString(2, member.getPwd());
+					pstmt.setString(3, member.getName());
+					pstmt.setString(4, member.getcPhone());
+
+					return pstmt;
+				}
+			});
+			
 	}
 
 		
