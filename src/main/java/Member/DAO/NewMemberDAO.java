@@ -24,16 +24,16 @@ public class NewMemberDAO implements MemberDAO{
 	@Override
 	public MemberDTO getMember(String EMAIL) throws ClassNotFoundException, SQLException {
 		List<MemberDTO> results = template.query(
-				"SELECT * FROM MEMBER WHERE EMAIL=?",
+				"SELECT * FROM MEMBER WHERE email=?",
 				new RowMapper<MemberDTO>() {
 					@Override
 					public MemberDTO mapRow(ResultSet rs, int rowNum)
 							throws SQLException {
 						MemberDTO member = new MemberDTO( //생성자
-								 rs.getString("EMAIL"),
-								rs.getString("PWD"),
-								 rs.getString("NAME"),
-								 rs.getString("CPHONE")
+								 rs.getString("email"),
+								rs.getString("pwd"),
+								 rs.getString("name"),
+								 rs.getString("cPhone")
 								);
 						return member;
 					}
